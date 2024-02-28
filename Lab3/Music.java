@@ -20,7 +20,7 @@ class Music extends Media {
     }
 
     public void listen(User user) {
-        user.getPurchasedMediaList().add(this);
+        user.addToCart(this);
     }
 
     public List<Music> generatePlaylist(List<Music> musicCatalog) {
