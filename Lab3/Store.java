@@ -3,59 +3,73 @@ package Lab3;
 import java.util.ArrayList;
 import java.util.List;
 
-class Store {
-    private List<User> users;
-    private List<Media> medias;
+class User {
+    private String username;
+    private String email;
+    private List<Media> purchasedMediaList;
+    private List<Media> shoppingCart;
 
-    public Store() {
-        this.users = new ArrayList<>();
-        this.medias = new ArrayList<>();
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+        this.purchasedMediaList = new ArrayList<>();
+        this.shoppingCart = new ArrayList<>();
     }
 
-    public void addUser(User user) {
-        users.add(user);
+    public String getUsername() {
+
+        return username;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public void setUsername(String username) {
+
+        this.username = username;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public String getEmail() {
+
+        return email;
     }
 
-    public List<Media> getMedias() {
-        return medias;
+    public void setEmail(String email) {
+
+        this.email = email;
     }
 
-    public void setMedias(List<Media> medias) {
-        this.medias = medias;
+    public List<Media> getPurchasedMediaList() {
+
+        return purchasedMediaList;
     }
 
-    public void displayUsers() {
-        System.out.println("Users:");
-        for (User user : users) {
-            System.out.println(user.getUsername() + " - " + user.getEmail());
-        }
+    public void setPurchasedMediaList(List<Media> purchasedMediaList) {
+
+        this.purchasedMediaList = purchasedMediaList;
     }
 
-    public void addMedia(Media media) {
-        medias.add(media);
+    public List<Media> getShoppingCart() {
+
+        return shoppingCart;
     }
 
-    public void displayMedia() {
-        System.out.println("\nMedia:");
-        for (Media media : medias) {
-            System.out.println(media);
-        }
+    public void setShoppingCart(List<Media> shoppingCart) {
+
+        this.shoppingCart = shoppingCart;
     }
 
-    public Book searchBook(String title) {
-        for (Media media : medias) {
-            if (media instanceof Book && media.getTitle().equals(title)) {
-                return (Book) media;
-            }
-        }
-        return null;
+    public void addToCart(Media media) {
+
+        shoppingCart.add(media);
     }
+
+    public void removeFromCart(Media media) {
+
+        shoppingCart.remove(media);
+    }
+
+    public void checkout() {
+        purchasedMediaList.addAll(shoppingCart);
+        shoppingCart.clear();
+    }
+
 }
+
