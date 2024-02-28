@@ -16,6 +16,22 @@ class Store {
         users.add(user);
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
+    public List<Media> getMedias() {
+        return medias;
+    }
+
+    public void setMedias(List<Media> medias) {
+        this.medias = medias;
+    }
+
     public void displayUsers() {
         System.out.println("Users:");
         for (User user : users) {
