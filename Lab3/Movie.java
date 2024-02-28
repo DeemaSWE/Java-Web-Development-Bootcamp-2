@@ -20,7 +20,7 @@ class Movie extends Media {
     }
 
     public void watch(User user) {
-        user.getPurchasedMediaList().add(this);
+        user.addToCart(this);
     }
 
     public List<Movie> recommendSimilarMovies(List<Movie> movieCatalog) {
