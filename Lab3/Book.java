@@ -22,8 +22,18 @@ class Book extends Media {
         this.stock = stock;
     }
 
+
+
     public void addReview(Review review) {
         reviews.add(review);
+    }
+
+    public List<Review> getReviews() {
+        return reviews;
+    }
+
+    public void setReviews(List<Review> reviews) {
+        this.reviews = reviews;
     }
 
     public double getAverageRating() {
@@ -35,8 +45,13 @@ class Book extends Media {
     }
 
     public void purchase(User user) {
-        user.getPurchasedMediaList().add(this);
-        stock--;
+        if(stock > 0){
+            user.addToCart(this);
+            stock--;
+        }
+        else {
+            System.out.println("stock is empty");
+        }
     }
 
     public boolean isBestseller() {
